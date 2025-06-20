@@ -1,5 +1,5 @@
 import express from 'express';
-import { saveAnalyticsConfig, getAnalyticsConfig } from '../controllers/analyticsController.js';
+import { saveAnalyticsConfig, getAnalyticsConfig } from '../controllers/Analytics.Controlller.js';
 
 const router = express.Router();
 

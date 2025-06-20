@@ -1,4 +1,4 @@
-import AnalyticsConfig from '../models/AnalyticsConfig.js';
+import AnalyticsConfig from "../Models/Analytics.js";
 
 
 export const saveAnalyticsConfig = async (req, res) => {
