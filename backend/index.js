@@ -26,5 +26,48 @@ app.get('/',(req,res)=>{
 
 app.use('/api/analytics', analyticsRoutes);
 
-const PORT = process.env.PORT || 5000;
+app.get('/gtm-script', (req, res) => {
+    const {
+      w = 'window',
+      d = 'document',
+      s = 'script',
+      l = 'dataLayer',
+      i = 'GTM-XXXXXXX'
+    } = req.query;
+  
+    const script = `
+  <script>
+  (function(${w},${d},${s},${l},${i}){${w}[${l}]=${w}[${l}]||[];${w}[${l}].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=${d}.getElementsByTagName(${s})[0],
+  j=${d}.createElement(${s}),dl=${l}!='dataLayer'?'&l='+${l}:'';
+  j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+${i}+dl;
+  f.parentNode.insertBefore(j,f);
+  })(${w},${d},${s},${l},'${i}');
+  </script>`;
+  
+    res.send({ script });
+  });
+  
+  app.post('/gtm-script', (req, res) => {
+    const {
+      w = 'window',
+      d = 'document',
+      s = 'script',
+      l = 'dataLayer',
+      i = 'GTM-XXXXXXX'
+    } = req.body;
+  
+    const script = `
+  <script>
+  (function(${w},${d},${s},${l},${i}){${w}[${l}]=${w}[${l}]||[];${w}[${l}].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=${d}.getElementsByTagName(${s})[0],
+  j=${d}.createElement(${s}),dl=${l}!='dataLayer'?'&l='+${l}:'';
+  j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+${i}+dl;
+  f.parentNode.insertBefore(j,f);
+  })(${w},${d},${s},${l},'${i}');
+  </script>`;
+  
+    res.send({ script });
+  });
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

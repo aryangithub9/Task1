@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const analyticsSchema = new mongoose.Schema({
   gtmId: { type: String },
   gaMeasurementId: { type: String },
