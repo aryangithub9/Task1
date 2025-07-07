@@ -1,22 +1,17 @@
-// AnalyticsTracker.js
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const AnalyticsTracker = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "page_view", {
-        page_path: location.pathname,
-        page_title: document.title,
-      });
+    window.gtag?.("event", "page_view", {
+      page_path: pathname,
+      page_title: document.title,
+    });
 
-      console.log("Page view tracked:", location.pathname); // optional debug
-    } else {
-      console.warn("gtag not found");
-    }
-  }, [location]);
+    console.log("Tracked:", pathname);
+  }, [pathname]);
 
   return null;
 };
