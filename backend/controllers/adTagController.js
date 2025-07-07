@@ -1,8 +1,9 @@
-// AdTagController
+// AdTagController.js
 
-const AdTag = require("../models/Adtag");
+import AdTag from '../models/Adtag.js';
+
 // Create script
-exports.createAdTag = async (req, res) => {
+export const createAdTag = async (req, res) => {
   const { creatorId, page, script_snippet, placement } = req.body;
 
   try {
@@ -15,7 +16,7 @@ exports.createAdTag = async (req, res) => {
 };
 
 // Get ad scripts for a page
-exports.getAdTagByPage = async (req, res) => {
+export const getAdTagByPage = async (req, res) => {
   const { page } = req.params;
   try {
     const scripts = await AdTag.find({ page });
@@ -26,16 +27,15 @@ exports.getAdTagByPage = async (req, res) => {
 };
 
 // Update
-
-exports.updateAdTag = async (req, res) => {
+export const updateAdTag = async (req, res) => {
   const { id } = req.params;
   const { script_snippet, placement, page } = req.body;
-  // console.log(id);
+
   try {
     const updatedAd = await AdTag.findByIdAndUpdate(
       id,
       { script_snippet, placement, page },
-      { new: true, runValidators: true}
+      { new: true, runValidators: true }
     );
     if (!updatedAd) {
       return res
@@ -51,7 +51,7 @@ exports.updateAdTag = async (req, res) => {
 };
 
 // Delete
-exports.deleteAdTag = async (req, res) => {
+export const deleteAdTag = async (req, res) => {
   const { id } = req.params;
 
   try {

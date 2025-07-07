@@ -1,18 +1,18 @@
-// Router
+// routes/adTagRoutes.js
 
-const express = require("express");
-const router = express.Router();
-
-const {
+import express from 'express';
+import {
   createAdTag,
   getAdTagByPage,
   updateAdTag,
   deleteAdTag,
-} = require("../controllers/adTagController");
+} from '../controllers/adTagController.js';
 
-router.post("/", createAdTag);
-router.get("/:page", getAdTagByPage);
-router.put("/:id", updateAdTag);
-router.delete("/:id", deleteAdTag);
+const router = express.Router();
 
-module.exports = router;
+router.post('/', createAdTag);
+router.get('/:page', getAdTagByPage);
+router.put('/:id', updateAdTag);
+router.delete('/:id', deleteAdTag);
+
+export default router;

@@ -1,8 +1,8 @@
-// AdTag
+// models/Adtag.js
 
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
-const Adtag = new mongoose.Schema(
+const AdtagSchema = new mongoose.Schema(
   {
     creatorId: {
       type: String,
@@ -18,11 +18,13 @@ const Adtag = new mongoose.Schema(
     },
     placement: {
       type: String,
-      enum: ["head", "body"],
-      default: "body",
+      enum: ['head', 'body'],
+      default: 'body',
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Adtag", Adtag);
+const Adtag = mongoose.model('Adtag', AdtagSchema);
+
+export default Adtag;

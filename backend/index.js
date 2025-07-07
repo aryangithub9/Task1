@@ -1,11 +1,14 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectDB = require("./config/db");
-const adTagRoutes = require("./routes/AdtagRoutes");
+
+
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import connectDB from './config/db.js';
+import adTagRoutes from './routes/AdtagRoutes.js';
 
 dotenv.config();
 connectDB();
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -13,7 +16,6 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.json({ message: "You are on server side" });
 });
-
 
 app.use("/api/ad-tag", adTagRoutes);
 
