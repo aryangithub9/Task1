@@ -28,16 +28,16 @@ function Navigation() {
         <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
           Page5
         </button>
-        <Link to="/admin">
-        <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+      </Link>
+      <Link to="/admin">
+        <button className="px-4 py-2  bg-lime-600 text-white rounded hover:bg-lime-900 transition">
           Admin 
         </button>
       </Link>
       <Link to="/course">
-        <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+        <button className="px-4 py-2 bg-slate-600 text-white rounded hover:bg-slate-800 transition">
           Course
         </button>
-      </Link>
       </Link>
     </div>
   );
